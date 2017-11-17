@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div>
+<main>    
+  <!-- Display flash message --> 
+  <section class="section--center mdl-grid mdl-grid--no-spacing">   
+    <div id="flashmessage" class="flash">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+      <!-- Timeout flash message -->
+      <script>$('#flashmessage').fadeOut(3000);</script>
+    </div>
+  </section>
+
+  <section>
+    <header>   
+      <div class="container">
+        <div class="row">
+          <h3>Things</h3>
+        </div>
+        {% for thing in things %}
+        <div class="row">
+          <h4>{{thing}}</h4>
+        </div>
+        {% endfor %}
+      </div>     
+    </header>
+  </section>
+
+</main>
+</div>
+
+{% endblock %}
